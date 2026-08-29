@@ -1,0 +1,555 @@
+line:
+  zones:
+  - body
+  - paint
+  - assembly
+  inspection_stations:
+    body_geometry: S28
+    paint_finish: S38
+    leak_electrical_eol: S41
+  variants:
+  - sedan
+  - suv
+  - van
+stations:
+- id: S01
+  name: Body station S01
+  zone: body
+  sensor_tier: C
+  base_cycle_time_s: 58
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S02
+  name: Body station S02
+  zone: body
+  sensor_tier: C
+  base_cycle_time_s: 61
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S03
+  name: Body station S03
+  zone: body
+  sensor_tier: B
+  base_cycle_time_s: 64
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    torque_nm:
+      nominal: 45.0
+      spec_low: 38.0
+      spec_high: 52.0
+      noise_sd: 1.2
+- id: S04
+  name: Body station S04
+  zone: body
+  sensor_tier: C
+  base_cycle_time_s: 67
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S05
+  name: Body station S05
+  zone: body
+  sensor_tier: C
+  base_cycle_time_s: 70
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S06
+  name: Body station S06
+  zone: body
+  sensor_tier: C
+  base_cycle_time_s: 73
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S07
+  name: Body station S07
+  zone: body
+  sensor_tier: B
+  base_cycle_time_s: 55
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    torque_nm:
+      nominal: 45.0
+      spec_low: 38.0
+      spec_high: 52.0
+      noise_sd: 1.2
+- id: S08
+  name: Body station S08
+  zone: body
+  sensor_tier: C
+  base_cycle_time_s: 58
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S09
+  name: Body station S09
+  zone: body
+  sensor_tier: B
+  base_cycle_time_s: 61
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    torque_nm:
+      nominal: 45.0
+      spec_low: 38.0
+      spec_high: 52.0
+      noise_sd: 1.2
+- id: S10
+  name: Body station S10
+  zone: body
+  sensor_tier: C
+  base_cycle_time_s: 64
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S11
+  name: Body station S11
+  zone: body
+  sensor_tier: C
+  base_cycle_time_s: 67
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S12
+  name: Body-shop weld station 3
+  zone: body
+  sensor_tier: A
+  base_cycle_time_s: 70
+  cycle_time_cv: 0.06
+  buffer_before: 10
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    weld_current_a:
+      nominal: 240.0
+      spec_low: 228.0
+      spec_high: 252.0
+      noise_sd: 1.8
+- id: S13
+  name: Body station S13
+  zone: body
+  sensor_tier: C
+  base_cycle_time_s: 73
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S14
+  name: Body station S14
+  zone: body
+  sensor_tier: C
+  base_cycle_time_s: 55
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S15
+  name: Body station S15
+  zone: body
+  sensor_tier: C
+  base_cycle_time_s: 58
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S16
+  name: Paint station S16
+  zone: paint
+  sensor_tier: B
+  base_cycle_time_s: 61
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    film_thickness_um:
+      nominal: 35.0
+      spec_low: 28.0
+      spec_high: 42.0
+      noise_sd: 1.0
+- id: S17
+  name: Paint station S17
+  zone: paint
+  sensor_tier: C
+  base_cycle_time_s: 64
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S18
+  name: Paint station S18
+  zone: paint
+  sensor_tier: C
+  base_cycle_time_s: 67
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S19
+  name: Paint booth 2
+  zone: paint
+  sensor_tier: A
+  base_cycle_time_s: 70
+  cycle_time_cv: 0.06
+  buffer_before: 10
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    paint_flow_rate_mlmin:
+      nominal: 420.0
+      spec_low: 390.0
+      spec_high: 450.0
+      noise_sd: 6.0
+- id: S20
+  name: Paint station S20
+  zone: paint
+  sensor_tier: C
+  base_cycle_time_s: 73
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S21
+  name: Paint station S21
+  zone: paint
+  sensor_tier: B
+  base_cycle_time_s: 55
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    film_thickness_um:
+      nominal: 35.0
+      spec_low: 28.0
+      spec_high: 42.0
+      noise_sd: 1.0
+- id: S22
+  name: Paint station S22
+  zone: paint
+  sensor_tier: C
+  base_cycle_time_s: 58
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S23
+  name: Paint station S23
+  zone: paint
+  sensor_tier: B
+  base_cycle_time_s: 61
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    film_thickness_um:
+      nominal: 35.0
+      spec_low: 28.0
+      spec_high: 42.0
+      noise_sd: 1.0
+- id: S24
+  name: Paint station S24
+  zone: paint
+  sensor_tier: C
+  base_cycle_time_s: 64
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S25
+  name: Paint station S25
+  zone: paint
+  sensor_tier: C
+  base_cycle_time_s: 67
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S26
+  name: Assembly station S26
+  zone: assembly
+  sensor_tier: B
+  base_cycle_time_s: 70
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    clamp_pressure_bar:
+      nominal: 6.0
+      spec_low: 5.0
+      spec_high: 7.2
+      noise_sd: 0.15
+- id: S27
+  name: Assembly station S27
+  zone: assembly
+  sensor_tier: C
+  base_cycle_time_s: 73
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S28
+  name: Body geometry inspection
+  zone: assembly
+  sensor_tier: B
+  base_cycle_time_s: 55
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    clamp_pressure_bar:
+      nominal: 6.0
+      spec_low: 5.0
+      spec_high: 7.2
+      noise_sd: 0.15
+- id: S29
+  name: Assembly station S29
+  zone: assembly
+  sensor_tier: C
+  base_cycle_time_s: 58
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S30
+  name: Assembly station S30
+  zone: assembly
+  sensor_tier: C
+  base_cycle_time_s: 61
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S31
+  name: Marriage station
+  zone: assembly
+  sensor_tier: A
+  base_cycle_time_s: 64
+  cycle_time_cv: 0.06
+  buffer_before: 10
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    press_force_kn:
+      nominal: 18.5
+      spec_low: 16.0
+      spec_high: 21.0
+      noise_sd: 0.35
+- id: S32
+  name: Assembly station S32
+  zone: assembly
+  sensor_tier: C
+  base_cycle_time_s: 67
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S33
+  name: Assembly station S33
+  zone: assembly
+  sensor_tier: B
+  base_cycle_time_s: 70
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    clamp_pressure_bar:
+      nominal: 6.0
+      spec_low: 5.0
+      spec_high: 7.2
+      noise_sd: 0.15
+- id: S34
+  name: Assembly station S34
+  zone: assembly
+  sensor_tier: C
+  base_cycle_time_s: 73
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S35
+  name: Assembly station S35
+  zone: assembly
+  sensor_tier: C
+  base_cycle_time_s: 55
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S36
+  name: Assembly station S36
+  zone: assembly
+  sensor_tier: B
+  base_cycle_time_s: 58
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    clamp_pressure_bar:
+      nominal: 6.0
+      spec_low: 5.0
+      spec_high: 7.2
+      noise_sd: 0.15
+- id: S37
+  name: Assembly station S37
+  zone: assembly
+  sensor_tier: C
+  base_cycle_time_s: 61
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S38
+  name: Paint finish inspection
+  zone: assembly
+  sensor_tier: B
+  base_cycle_time_s: 64
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    clamp_pressure_bar:
+      nominal: 6.0
+      spec_low: 5.0
+      spec_high: 7.2
+      noise_sd: 0.15
+- id: S39
+  name: Assembly station S39
+  zone: assembly
+  sensor_tier: C
+  base_cycle_time_s: 67
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S40
+  name: Assembly station S40
+  zone: assembly
+  sensor_tier: C
+  base_cycle_time_s: 70
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+- id: S41
+  name: Leak/electrical end-of-line test
+  zone: assembly
+  sensor_tier: B
+  base_cycle_time_s: 73
+  cycle_time_cv: 0.06
+  buffer_before: 8
+  variant_cycle_multiplier:
+    sedan: 1.0
+    suv: 1.18
+    van: 1.27
+  signals:
+    clamp_pressure_bar:
+      nominal: 6.0
+      spec_low: 5.0
+      spec_high: 7.2
+      noise_sd: 0.15

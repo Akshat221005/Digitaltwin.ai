@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Generated scenario data is large and fully reproducible via simulator/run.py
+# (see README's "how to run"). Keep only the small weld_drift_demo sample,
+# which the demo video and dashboard depend on being checked in.
+data/*
+!data/weld_drift_demo/
+!data/weld_drift_demo/*.parquet
+
+docs/*.png

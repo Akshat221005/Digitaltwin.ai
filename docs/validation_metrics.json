@@ -1,0 +1,61 @@
+{
+  "forecaster": {
+    "scenario": "noisy_line",
+    "lead_time_curve": [
+      {
+        "bucket_h": 1.0,
+        "n": 46,
+        "median_abs_error_h": 0.08103974083333335,
+        "iqr_lo_h": 0.05335795305555555,
+        "iqr_hi_h": 0.14179419111111113
+      },
+      {
+        "bucket_h": 2.0,
+        "n": 44,
+        "median_abs_error_h": 0.3919070301388889,
+        "iqr_lo_h": 0.30905660777777777,
+        "iqr_hi_h": 0.44492576104166665
+      },
+      {
+        "bucket_h": 4.0,
+        "n": 96,
+        "median_abs_error_h": 0.59080409125,
+        "iqr_lo_h": 0.25781561229166666,
+        "iqr_hi_h": 1.0269687915277776
+      },
+      {
+        "bucket_h": 6.0,
+        "n": 92,
+        "median_abs_error_h": 0.953653958611111,
+        "iqr_lo_h": 0.37015279777777776,
+        "iqr_hi_h": 1.516896353125
+      },
+      {
+        "bucket_h": 8.0,
+        "n": 71,
+        "median_abs_error_h": 1.5389749961111112,
+        "iqr_lo_h": 0.9529180083333333,
+        "iqr_hi_h": 2.1300922094444443
+      }
+    ],
+    "ci_coverage": 0.7927170868347339,
+    "false_forecast_rate_per_shift": 0.031034894462993557,
+    "step_change_refusal_rate": 0.8421052631578947,
+    "n_step_change_episodes": 19
+  },
+  "defect_inference": {
+    "scenario": "weld_drift_demo",
+    "snapshot_ts": "2026-01-01 13:29:59.797503",
+    "n_flagged": 34,
+    "n_real_defects": 4,
+    "true_positives": 3,
+    "precision": 0.08823529411764706,
+    "recall": 0.75
+  },
+  "detection_lead_time": {
+    "scenario": "weld_drift_demo",
+    "first_detection_ts": "2026-01-01 09:55:25",
+    "first_surfacing_ts": "2026-01-01 13:24:43",
+    "lead_time_minutes": 209.3
+  }
+}

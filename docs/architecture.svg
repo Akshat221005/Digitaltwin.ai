@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 420" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#444"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #f5f7fa; stroke: #333; stroke-width: 1.5; rx: 8; }
+    .box-twin { fill: #eaf3ff; stroke: #2b6cb0; stroke-width: 2; rx: 8; }
+    .box-dash { fill: #eafaf0; stroke: #2f855a; stroke-width: 1.5; rx: 8; }
+    .box-none { fill: #fff5f5; stroke: #c53030; stroke-width: 1.5; stroke-dasharray: 5,4; rx: 8; }
+    .label { font-size: 13px; fill: #222; }
+    .sub { font-size: 10.5px; fill: #555; }
+    .arrow { stroke: #444; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .title { font-size: 15px; font-weight: 600; fill: #111; }
+  </style>
+
+  <text x="20" y="28" class="title">DigitalTwin.ai — data flow (read-only, PLC to dashboard)</text>
+
+  <!-- PLCs -->
+  <rect x="20" y="70" width="150" height="80" class="box"/>
+  <text x="95" y="100" text-anchor="middle" class="label">PLCs / line</text>
+  <text x="95" y="118" text-anchor="middle" class="label">controllers</text>
+  <text x="95" y="138" text-anchor="middle" class="sub">tier A/B signals,</text>
+
+  <!-- OPC-UA/MQTT tap -->
+  <rect x="220" y="70" width="170" height="80" class="box"/>
+  <text x="305" y="100" text-anchor="middle" class="label">Read-only OPC-UA</text>
+  <text x="305" y="118" text-anchor="middle" class="label">/ MQTT tap</text>
+  <text x="305" y="138" text-anchor="middle" class="sub">subscribe only, no write nodes</text>
+
+  <!-- Barcode scanners -->
+  <rect x="220" y="180" width="170" height="70" class="box"/>
+  <text x="305" y="208" text-anchor="middle" class="label">Barcode scanners</text>
+  <text x="305" y="226" text-anchor="middle" class="sub">entry/exit timestamps,</text>
+  <text x="305" y="240" text-anchor="middle" class="sub">all 41 stations (incl. tier C)</text>
+
+  <!-- Historian -->
+  <rect x="220" y="280" width="170" height="60" class="box"/>
+  <text x="305" y="306" text-anchor="middle" class="label">Historian tap</text>
+  <text x="305" y="324" text-anchor="middle" class="sub">where available</text>
+
+  <!-- Edge gateway -->
+  <rect x="440" y="130" width="160" height="80" class="box"/>
+  <text x="520" y="160" text-anchor="middle" class="label">Edge gateway</text>
+  <text x="520" y="178" text-anchor="middle" class="sub">plant-network side,</text>
+  <text x="520" y="192" text-anchor="middle" class="sub">one-way forward only</text>
+
+  <!-- Twin -->
+  <rect x="650" y="90" width="220" height="160" class="box-twin"/>
+  <text x="760" y="118" text-anchor="middle" class="label" font-weight="600">DigitalTwin.ai</text>
+  <text x="760" y="140" text-anchor="middle" class="sub">integration.DataSource</text>
+  <text x="760" y="156" text-anchor="middle" class="sub">twin.state / genealogy / confidence</text>
+  <text x="760" y="172" text-anchor="middle" class="sub">models.detect / forecast / infer /</text>
+  <text x="760" y="186" text-anchor="middle" class="sub">bottleneck / cascade</text>
+  <text x="760" y="210" text-anchor="middle" class="sub" font-weight="600">read-only: emits Recommendation</text>
+  <text x="760" y="226" text-anchor="middle" class="sub">objects only (proposed →</text>
+  <text x="760" y="240" text-anchor="middle" class="sub">acknowledged → executed_by_human)</text>
+
+  <!-- Dashboards -->
+  <rect x="930" y="90" width="230" height="160" class="box-dash"/>
+  <text x="1045" y="118" text-anchor="middle" class="label" font-weight="600">Streamlit dashboards</text>
+  <text x="1045" y="142" text-anchor="middle" class="sub">Supervisor (real-time)</text>
+  <text x="1045" y="160" text-anchor="middle" class="sub">Plant Manager (planning)</text>
+  <text x="1045" y="178" text-anchor="middle" class="sub">Leadership (investment case)</text>
+  <text x="1045" y="204" text-anchor="middle" class="sub">one model, three views</text>
+  <text x="1045" y="222" text-anchor="middle" class="sub">human clicks Acknowledge /</text>
+  <text x="1045" y="236" text-anchor="middle" class="sub">Mark executed by human</text>
+
+  <!-- No path back -->
+  <rect x="650" y="300" width="510" height="60" class="box-none"/>
+  <text x="905" y="326" text-anchor="middle" class="label" fill="#c53030">No path back into line control anywhere in this codebase.</text>
+  <text x="905" y="344" text-anchor="middle" class="sub" fill="#c53030">No writer interface exists — that absence is the point (see integration/sources.py).</text>
+
+  <!-- Arrows -->
+  <path class="arrow" d="M170,110 L218,110"/>
+  <path class="arrow" d="M170,130 Q195,215 218,215"/>
+  <path class="arrow" d="M390,110 L438,155"/>
+  <path class="arrow" d="M390,215 L438,175"/>
+  <path class="arrow" d="M390,310 Q415,265 438,190"/>
+  <path class="arrow" d="M600,170 L648,170"/>
+  <path class="arrow" d="M870,170 L928,170"/>
+</svg>

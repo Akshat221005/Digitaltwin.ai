@@ -1,0 +1,47 @@
+# Named, seeded, reproducible demo scenarios (BUILD_SPEC.md §5.5).
+# All timestamps are naive local time, matching simulator/line.py's tick clock.
+
+scenarios:
+  # 30 days, background degradation rates only. Used as the training/baseline
+  # dataset for anything that wants "normal" line behaviour to compare against.
+  nominal:
+    seed: 1001
+    defect_seed: 5001
+    start_ts: "2026-01-01T00:00:00"
+    duration_days: 30
+    background_episodes_per_signal_per_day: 0.15
+    episodes: []
+
+  # THE VIDEO SCENARIO. Clean start (no background noise, so the S12 drift is
+  # the only signal in play), a single linear_wear episode at S12 weld current
+  # beginning 09:00, crossing spec_high (252A, from nominal 240A) ~13:30.
+  # Byte-reproducible: fixed seeds, fully explicit episode schedule.
+  weld_drift_demo:
+    seed: 2001
+    defect_seed: 7001
+    start_ts: "2026-01-01T06:00:00"
+    duration_hours: 10
+    background_episodes_per_signal_per_day: 0.0
+    episodes:
+      - station_id: S12
+        signal: weld_current_a
+        episode_type: linear_wear
+        start_ts: "2026-01-01T09:00:00"
+        drift_rate_per_hour: 2.6667  # (252 - 240) / 4.5h
+
+  # Elevated background noise/step-change rate, for false-alarm-rate testing
+  # (BUILD_SPEC.md §6.4's false-forecast-rate and step-change-refusal-rate
+  # metrics are measured against this scenario, not weld_drift_demo).
+  noisy_line:
+    seed: 3001
+    defect_seed: 9001
+    start_ts: "2026-01-01T00:00:00"
+    duration_days: 5
+    background_episodes_per_signal_per_day: 0.8
+    type_weights:
+      linear_wear: 0.15
+      accelerating_wear: 0.10
+      step_change: 0.35
+      noise_only: 0.35
+      recovering: 0.05
+    episodes: []
