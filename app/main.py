@@ -19,7 +19,7 @@ from simulator.run import load_scenarios, build_scenario  # noqa: E402
 from twin.state import DEFAULT_LOOKBACK_HOURS, build_twin_state  # noqa: E402
 from app import view_leadership, view_manager, view_supervisor  # noqa: E402
 
-st.set_page_config(page_title="DigitalTwin.ai", layout="wide")
+st.set_page_config(page_title="DigitalTwin.ai", layout="wide", initial_sidebar_state="expanded")
 
 SCENARIOS = ["weld_drift_demo", "nominal", "noisy_line"]
 
@@ -65,23 +65,26 @@ def build_live_sim_upto(scenario: str, as_of_iso: str):
 
 
 def main():
+    with open("app/style.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
     st.title("DigitalTwin.ai")
-    st.caption(
-        "A digital twin of a mixed-model assembly line — bottlenecks and defects share a "
-        "root cause: a station behaving abnormally. **One model, three views.**"
+    st.markdown(
+        "<p style='color: #64748b; font-size: 1.1em; margin-top: -10px; margin-bottom: 30px;'>"
+        "Industrial Twin: Anomaly Detection, Degradation Forecasting & Quality Inference"
+        "</p>",
+        unsafe_allow_html=True
     )
 
     with st.sidebar:
-        st.header("Scenario")
-        scenario = st.selectbox("Scenario", SCENARIOS, index=0)
+        st.header("Control Panel")
+        scenario = st.selectbox("Active Scenario", SCENARIOS, index=0, help="Select the dataset to analyze.")
         events, status, ground_truth, degradation_truth = load_scenario_data(scenario)
 
         min_ts = events.entry_ts.min().to_pydatetime()
         max_ts = events.exit_ts.max().to_pydatetime()
-        default_ts = (min_ts + (max_ts - min_ts) * 0.55)  # lands mid-drift for weld_drift_demo
+        default_ts = (min_ts + (max_ts - min_ts) * 0.55)
 
-        # Reset playback position whenever the scenario changes, so a stale
-        # timestamp from a different scenario's time range never leaks in.
         if st.session_state.get("_scenario") != scenario:
             st.session_state._scenario = scenario
             st.session_state.as_of_ts = default_ts
@@ -89,7 +92,7 @@ def main():
         st.session_state.setdefault("as_of_ts", default_ts)
         st.session_state.setdefault("playing", False)
 
-        st.header("Time")
+        st.subheader("⏱ Time Playback")
         play_col, reset_col = st.columns(2)
         if play_col.button("⏸ Pause" if st.session_state.playing else "▶ Play", use_container_width=True):
             st.session_state.playing = not st.session_state.playing
@@ -100,7 +103,7 @@ def main():
             st.rerun()
 
         step_minutes = st.select_slider(
-            "Playback speed (minutes/tick)", options=[1, 2, 5, 10, 15, 30], value=2,
+            "Playback speed (min/tick)", options=[1, 2, 5, 10, 15, 30], value=2,
         )
 
         if st.session_state.playing:
@@ -111,18 +114,18 @@ def main():
             st.session_state.as_of_ts = next_ts
 
         as_of = st.slider(
-            "As of", min_value=min_ts, max_value=max_ts,
+            "Historical 'As of'", min_value=min_ts, max_value=max_ts,
             value=st.session_state.as_of_ts, step=timedelta(minutes=1),
             format="MM/DD HH:mm",
         )
-        st.session_state.as_of_ts = as_of  # keep in sync if the user drags manually
+        st.session_state.as_of_ts = as_of
 
-        st.caption(f"**{as_of.strftime('%Y-%m-%d %H:%M:%S')}** — nothing after this instant is visible to any model.")
+        st.caption(f"**Current Time: {as_of.strftime('%Y-%m-%d %H:%M:%S')}**")
 
         st.divider()
         st.caption(
-            "Read-only twin: recommendations only, never written to a PLC. "
-            "See README for the OPC-UA integration stance."
+            "🔒 **Read-Only Mode**: Twin acts as a passive monitor. "
+            "It never writes back to the line PLC directly."
         )
 
     lookback_hours = DEFAULT_LOOKBACK_HOURS if scenario != "weld_drift_demo" else 12.0
@@ -130,7 +133,7 @@ def main():
     cfg = get_line_config()
 
     tab_sup, tab_mgr, tab_lead = st.tabs([
-        "🛠 Supervisor (real-time)", "📊 Plant Manager (planning)", "💼 Leadership (investment case)",
+        "🛠 Supervisor (Real-time)", "📊 Plant Manager (Planning)", "💼 ROI (Leadership)"
     ])
     get_live_sim = lambda: build_live_sim_upto(scenario, as_of.isoformat())  # noqa: E731
 
